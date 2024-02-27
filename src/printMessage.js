@@ -5,12 +5,13 @@ let info = {
 };
 
 const printMessage = (characterInfo) => {
-  // Implemente seu código aqui
-  let result = `Boas vindas, ${characterInfo.personagem}`;
-
-  return result;
+  if (typeof characterInfo === 'object' && characterInfo.personagem) {
+    let result = `Boas vindas, ${characterInfo.personagem}`;    
+    return result;
+  }
+  throw new Error('objeto inválido');
 };
 
-console.log(printMessage(info));
+// console.log(printMessage(info));
 
 module.exports = { info, printMessage };
