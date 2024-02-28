@@ -37,9 +37,25 @@ const professionalBoard = [
   },
 ];
 
+const getEmployeeInfo = (paramId) => {
+  const data = professionalBoard;
+  for (let index = 0; index < data.length; index += 1) {
+    if (data[index].id === paramId) {      
+      const employeeInfo = data[index];
+      return employeeInfo;
+    }
+  }
+  throw new Error('ID não identificado');
+};
+
 const searchEmployee = (id, employeeInfo) => {
-  // Implemente seu código aqui
-  console.log(professionalBoard, id, employeeInfo);
+  const data = getEmployeeInfo(id);
+  if (employeeInfo === 'firstName' 
+    || employeeInfo === 'lastName' 
+      || employeeInfo === 'specialities') {
+    return data[employeeInfo];
+  } 
+  throw new Error('Informação indisponível');
 };
 
 module.exports = searchEmployee;
